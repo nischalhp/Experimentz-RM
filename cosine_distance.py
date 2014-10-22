@@ -53,24 +53,26 @@ def read_text():
             coldstorage_products.append(cosine_obj)
 
 
-	with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/rm_fp.csv','w') as rm_fp_file:
+    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/rm_fp.csv','w') as rm_fp_file:
         for product in redmart_products:
-            for product_fp in fairprice_products:_
-                product_vector = text_to_vector(product)
-                product_fp_vector = text_to_vector(product_fp)
+            for product_fp in fairprice_products:
+                product_vector = text_to_vector(list(set(product.get_product_name())))
+                product_fp_vector = text_to_vector(list(set(product_fp.get_product_name())))
                 cosine_similarity = get_cosine(product_vector,product_fp_vector)
                 # just to get the ones with maximum similarity
                 if cosine_similarity > 0.79:
-                    rm_fp_file.write('%s,%s,%s \n'%(product,product_fp,cosine_similarity))
+                    print 'similarity between %s and %s' %(product_vector,product_fp_vector)
+                    rm_fp_file.write('%s,%s,%s \n'%(product.get_product_id(),product_fp.get_product_id(),cosine_similarity))
 
-	with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/rm_cs.csv','w') as rm_cs_file:
-	    for product in redmart_products:
-	    	for product_cs in coldstorage_products:
-	    		product_vector = text_to_vector(product)
-	    		product_cs_vector = text_to_vector(product_cs)
-	    		cosine_similarity = get_cosine(product_vector,product_cs_vector)
-	    		if cosine_similarity > 0:
-	    			rm_cs_file.write('%s,%s,%s \n'%(product,product_cs,cosine_similarity))	
+    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/rm_cs.csv','w') as rm_cs_file:
+        for product in redmart_products:
+            for product_cs in coldstorage_products:
+                product_vector = text_to_vector(list(set(product.get_product_name())))
+                product_cs_vector = text_to_vector(list(set(product_cs.get_product_name())))
+                cosine_similarity = get_cosine(product_vector,product_cs_vector)
+                if cosine_similarity > 0.79:
+                    print 'similarity between %s and %s' %(product_vector,product_cs_vector)
+                    rm_cs_file.write('%s,%s,%s \n'%(product.get_product_id(),product_cs.get_product_id(),cosine_similarity))
 
 
 read_text()
