@@ -8,7 +8,7 @@ execfile('/Users/nischalhp/Downloads/softwares/analytics/spark-1.1.0-bin-hadoop2
 from pyspark.mllib.recommendation import ALS
 
 def get_db_connection():
-    connection = db.connect('host=localhost port=27030 dbname=ods user=ods_prod password=ods#R3dMart')
+    connection = db.connect('host=localhost port=27030 dbname=ods user= password=')
     return connection
 
 
