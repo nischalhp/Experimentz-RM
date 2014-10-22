@@ -24,7 +24,7 @@ def text_to_vector(text):
 
 def read_text():
 
-    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/Redmart.csv','rU') as file_redmart:
+    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/rm.csv','rU') as file_redmart:
         redmart_csv = csv.reader(file_redmart,delimiter=',')
         redmart_products = []
         next(redmart_csv,None)
@@ -33,7 +33,7 @@ def read_text():
             cosine_obj.set_product_details(row[1].lower().strip(),row[2])
             redmart_products.append(cosine_obj)
 
-    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/FairPrice.csv','rU') as file_fairprice:
+    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/fp.csv','rU') as file_fairprice:
         fairprice_csv = csv.reader(file_fairprice,delimiter=',')
         fairprice_products = []
         next(fairprice_csv,None)
@@ -43,7 +43,7 @@ def read_text():
             fairprice_products.append(cosine_obj)
 
 
-    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/ColdStorage.csv','rU') as file_coldstorage:
+    with open('/Users/nischalhp/Downloads/softwares/datasets/products_comparison/cs.csv','rU') as file_coldstorage:
         coldstorage_csv = csv.reader(file_coldstorage,delimiter=',')
         coldstorage_products = []
         next(coldstorage_csv,None)
