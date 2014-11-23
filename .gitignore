@@ -11,6 +11,9 @@ Icon
 
 # Thumbnails
 ._*
+
+# user config
+*.swp
 *.conf
 
 # Files that might appear on external disk
