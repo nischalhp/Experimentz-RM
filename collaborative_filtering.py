@@ -7,10 +7,24 @@ execfile('/Users/nischalhp/Downloads/softwares/analytics/spark-1.1.0-bin-hadoop2
 
 from pyspark.mllib.recommendation import ALS
 
+config = {}
+
 def get_db_connection():
-    connection = db.connect('host=localhost port=27030 dbname=ods user= password=')
     return connection
 
+def read_configuration():
+	execfile("configuration.conf",config)
+
+def db_connect():
+	host = 'localhost'
+	port = config['postgres_port']
+	dbname = config['postgres_dbname']
+	user = config['postgres_user']
+	password = config['postgres_password']
+
+	connectionString = 'host = %s port=%s dbname=%s user=%s password=%s' %(host,port,dbname,user,password)
+	connection = db.connect(connectionString)
+	return connection
 
 def prepare_data():
     conn = get_db_connection()
