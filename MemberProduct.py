@@ -1,21 +1,13 @@
 class MemberProduct:
 
 	averageItemsInBasket = 0
-	frequencyOfProducts = {}
+	frequencyOfProductsWeek = {}
 
-	def add_or_modify_product_freq(self,productId):
-		productIds = self.frequencyOfProducts.keys()
-		# which means the user has already purchased this product before
-		if productId in productIds:
-			freqOfProduct = self.frequencyOfProducts[productId]
-			freqOfProduct += 1
-			self.frequencyOfProducts[productId] = freqOfProduct
-		else:
-			# first time buy
-			self.frequencyOfProducts[productId] = 1
+	def setFreqMap(self,productFreqHash):
+            self.frequencyOfProductsWeek = productFreqHash
 
 	def getFrequencyOfProduct(self):
-		return self.frequencyOfProducts
+		return self.frequencyOfProductsWeek
 
 	def modifyAverageItemsInBasket(self,avg):
 		self.averageItemsInBasket = avg
