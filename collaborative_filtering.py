@@ -85,12 +85,12 @@ def parseRating(line):
     # user,product,rating
     return (fields[0],fields[1],fields[2])
 
-#def main():
+def main():
 
-    #prepare_data()
-    #train_and_predict()
+    prepare_data()
+    train_and_predict()
 
-#main()
+main()
 
 
 
