@@ -7,7 +7,10 @@ class MemberProduct:
             self.frequencyOfProductsWeek = productFreqHash
 
 	def getFrequencyOfProduct(self):
-		return self.frequencyOfProductsWeek
+	    return self.frequencyOfProductsWeek
+
+        def getFrequencyOfProductPerWeek(self,week):
+            return self.frequencyOfProductsWeek[week]
 
 	def modifyAverageItemsInBasket(self,avg):
 		self.averageItemsInBasket = avg
